@@ -1,0 +1,19 @@
+# Python / Django
+__pycache__/
+*.py[cod]
+*.sqlite3
+*.log
+venv/
+.venv/
+env/
+
+# Node / Vue
+node_modules/
+dist/
+.env
+.env.local
+
+# Editor / Sistema
+.vscode/
+.DS_Store
+Thumbs.db
