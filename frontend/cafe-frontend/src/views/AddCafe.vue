@@ -29,7 +29,7 @@ const form = ref({
 });
 
 const addCafe = async () => {
-    await api.post('cafeterias/', form.value);
+    await api.post('cafes/cafeterias/', form.value);
     router.push('/');
 
 };

@@ -30,12 +30,12 @@ const form = ref<any>({
 });
 
 onMounted(async () => {
-    const date = await api.get(`/cafeterias/${route.params.id}`);
-    form.value = date;
+    const { data } = await api.get(`/cafes/cafeterias/${route.params.id}/`);
+    form.value = data;
 });
 
 const updateCafe = async () => {
-    await api.put(`/cafeterias/${route.params.id}`, form.value);
+    await api.put(`/cafes/cafeterias/${route.params.id}/`, form.value);
     router.push('/');
 };
 </script>

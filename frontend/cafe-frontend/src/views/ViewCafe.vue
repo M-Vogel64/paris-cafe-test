@@ -21,7 +21,7 @@ const route = useRoute();
 const cafe = ref<any>(null);
 
 const fetchCafe = async () => {
-    const { data } = await api.get(`cafeterias/${route.params.id}/`);
+    const { data } = await api.get(`cafes/cafeterias/${route.params.id}/`);
     cafe.value = data;
 }; 
 

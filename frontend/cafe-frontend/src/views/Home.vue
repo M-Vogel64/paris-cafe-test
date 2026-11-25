@@ -16,21 +16,21 @@
 
 <script setup lang="ts">
 import { ref, onMounted } from 'vue';
-import api from '../services/api';
-import CafeItem from '../components/CafeItem.vue';
+import api from '../services/api.ts';
+import CafeItem from '../views/CafeItem.vue';
 
 const cafes = ref<any>([]);
 const cafesOriginais = ref<any>([]);
 const ordenado = ref(false);
 
 const fetchCafes = async () => {
-    const { data } = await api.get('cafeterias/');
+    const { data } = await api.get('cafes/cafeterias/');
     cafesOriginais.value = [...data];
     cafes.value = [...data];
 };
 
 const deleteCafe = async (id: number) => {
-    await api.delete(`cafeterias/${id}/`);
+    await api.delete(`cafes/cafeterias/${id}/`);
     await fetchCafes();
     if (ordenado.value) {
         ordenarPorAvaliacao();
