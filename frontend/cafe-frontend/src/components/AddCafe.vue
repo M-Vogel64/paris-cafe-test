@@ -1,0 +1,38 @@
+<template>
+    <div class="container mt-4">
+        <h2>Adicionar Cafeteria</h2>
+        <b-form @submit.prevent="addCafe">
+            <b-form-input v-model="form.nome" label="Nome" class="mb-2" maxlength="255" required />
+
+            <b-form-input v-model="form.data_inauguracao" label="Data de Inauguração" class="mb-2" type="date" :max="new Date().
+                toLocaleDateString('sv-SE')" required />
+            <b-form-textarea v-model="form.endereco" placeholder="Endereço" class="mb-2" maxlength="255" required />
+            <b-form-input v-model="form.avaliacao" type="number" min="0" max="10" step="0.1" class="mb-2"
+                placeholder="Avaliação" required />
+            <b-button type="submit" variant="success" class="mb-2">Confirmar</b-button>
+            <router-link to="/" class="btn btn-secondary mb-2">Cancelar</router-link>
+        </b-form>
+    </div>
+</template>
+
+<script setup lang="ts">
+import { ref } from 'vue';
+import { useRouter } from 'vue-router';
+import api from '../services/api';
+
+const router = useRouter();
+const form = ref({
+    nome: '',
+    data_inauguracao: '',
+    endereco: '',
+    avaliacao: 0,
+});
+
+const addCafe = async () => {
+    await api.post('cafeterias/', form.value);
+    router.push('/');
+
+};
+</script>
+
+<style></style>
